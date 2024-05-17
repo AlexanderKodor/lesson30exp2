@@ -12,7 +12,7 @@ public class StringToFio {
     public static void main(String[] args) {
         System.out.println(parsename("Кодоров Александр Анатольевич").toString());
         System.out.println(parsename("Кодоров Александр Анатольевич").toString());
-        System.out.println(parsename("Кодоров-Коробков А Ан").toString());
+        System.out.println(parsename("Кодоров-Коробков Алек Ан").toString());
         System.out.println(parsename("Код-Коробков Ал Ан Нак").toString());
     }
 
