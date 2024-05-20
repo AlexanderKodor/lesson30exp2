@@ -1,4 +1,4 @@
-package com.alex;
+package com.alex.service;
 
 import com.alex.entity.FullName;
 import com.alex.exception.RegexValidationException;
@@ -9,20 +9,13 @@ public class StringToFio {
     public static final String NAME_REGEX = "[А-Я][а-я]+";
     public static final String PATRONYMIC_REGEX = "[А-Я][а-я]+";
 
-    public static void main(String[] args) {
-        System.out.println(parsename("Кодоров Александр Анатольевич").toString());
-        System.out.println(parsename("Кодоров Александр Анатольевич").toString());
-        System.out.println(parsename("Кодоров-Коробков Але Ан").toString());
-        System.out.println(parsename("Код-Коробков Ал Ан Нак").toString());
-    }
-
-    private static FullName parsename(String inS) {
+    public FullName parsename(String inS) {
         if (!inS.matches(FULL_NAME_REGEX)) {
             throw new RegexValidationException(inS, FULL_NAME_REGEX);
         }
         String[] fio = inS.split(" ");
         StringToFio stf = new StringToFio();
-        validateSurname(stf, fio[0]);
+        stf.validateSurname(stf, fio[0]);
         stf.validateName(fio[1]);
         FullName fullName = null;
         if (stf.validatePatronymicname(fio[2]))
@@ -34,10 +27,9 @@ public class StringToFio {
         if (!str.matches(NAME_REGEX)) {
             throw new RegexValidationException(str, NAME_REGEX);
         }
-        //return true;
     }
 
-    private static void validateSurname(StringToFio stf, String str) {
+    public void validateSurname(StringToFio stf, String str) {
         if (str.contains("-")) {
             if (!str.matches(DOUBLE_SURNAME_REGEX)) {
                 throw new RegexValidationException(str, DOUBLE_SURNAME_REGEX);
