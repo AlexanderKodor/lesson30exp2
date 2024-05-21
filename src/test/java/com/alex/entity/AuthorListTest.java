@@ -22,7 +22,6 @@ public class AuthorListTest {
         String strName = "Сидоров Петр Иванович";
         FullName fullName = new FullName("Петр", "Иванович", "Сидоров");
         doReturn(fullName).when(authorList).addAuthor(strName);
-//        doReturn(fullName).when(authorList).addAuthor(strName);
     }
 
     @Test
@@ -30,7 +29,6 @@ public class AuthorListTest {
         String strName = "Сидоров Петр И";
         FullName fullName = new FullName("Петр", "Иванович", "Сидоров");
         doThrow(RegexValidationException.class).when(authorList).addAuthor(strName);
-//        doReturn(fullName).when(authorList).addAuthor(strName);
     }
 
 }
